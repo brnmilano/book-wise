@@ -1,0 +1,80 @@
+@import "../../styles/breakpoints";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 50%;
+  position: relative;
+
+  .inputContainer {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+    .input {
+      border-radius: 4px;
+      width: 100%;
+      border: solid 1px var(--gray-500);
+      padding: 0.75rem 1rem;
+      min-height: 48px !important;
+      color: var(--gray-200);
+      font-size: 0.875rem;
+      font-family: inherit !important;
+      background-color: var(--gray-800);
+      transition: all 0.2s ease-in-out;
+
+      &::placeholder {
+        color: var(--gray-400);
+      }
+
+      &:disabled {
+        cursor: not-allowed;
+      }
+
+      &:focus {
+        border: 1px solid var(--green-200);
+        color: var(--gray-200);
+
+        + .icon {
+          color: var(--green-200);
+        }
+      }
+    }
+
+    .icon {
+      position: absolute;
+      right: 1rem;
+      color: var(--gray-600);
+      transition: all 0.2s ease-in-out;
+    }
+  }
+}
+
+.inputError {
+  border: 1px solid var(--error) !important;
+}
+
+.errorMessage {
+  color: var(--error);
+  margin-top: -0.313rem;
+  visibility: hidden;
+  opacity: 0;
+  transition:
+    visibility 0.5s,
+    opacity 0.5s linear;
+  position: absolute;
+  bottom: -1.25rem;
+
+  p {
+    font-size: 0.75rem !important;
+  }
+}
+
+.showingErrorMessage {
+  visibility: visible;
+  opacity: 1;
+}
