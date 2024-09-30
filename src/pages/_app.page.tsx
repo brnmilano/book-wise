@@ -2,6 +2,7 @@ import type { AppProps } from "next/app";
 import { Nunito } from "@next/font/google";
 import "../styles/index.scss";
 import Head from "next/head";
+import { SessionProvider } from "next-auth/react";
 
 const nunito = Nunito({
   weight: ["400", "500", "600", "700"],
@@ -9,7 +10,10 @@ const nunito = Nunito({
   display: "swap",
 });
 
-export default function App({ Component, pageProps }: AppProps) {
+export default function App({
+  Component,
+  pageProps: { session, ...pageProps },
+}: AppProps) {
   return (
     <div className={nunito.className}>
       <Head>
@@ -18,7 +22,9 @@ export default function App({ Component, pageProps }: AppProps) {
         <link rel="icon" type="image/png" href="./favicon.ico" sizes="16x16" />
       </Head>
 
-      <Component {...pageProps} />
+      <SessionProvider session={session}>
+        <Component {...pageProps} />
+      </SessionProvider>
     </div>
   );
 }
