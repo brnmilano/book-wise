@@ -1,0 +1,78 @@
+.button {
+  font-family: var(--default);
+
+  &.buttonOutlined {
+    display: flex;
+    justify-content: flex-start;
+    background-color: var(--gray-600);
+    border-radius: 8px;
+    border: 1px solid transparent;
+    color: var(--white);
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-transform: none;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      background-color: var(--gray-500);
+      border: 1px solid transparent;
+    }
+  }
+
+  &.textButton {
+    color: var(--gray-100);
+    font-size: 0.875rem;
+    text-transform: none;
+    padding: 0 10px !important;
+
+    &:hover {
+      border: none;
+      background-color: transparent;
+      color: var(--gray-100);
+    }
+  }
+
+  &.buttonSizeLarge {
+    width: 100%;
+  }
+
+  &.butonSizeMedium {
+    padding: 0.625rem 1.5625rem;
+    min-height: 4.5rem;
+    min-width: 23.25rem;
+  }
+
+  &.sizeSmall {
+    padding: 10px 12px;
+  }
+
+  .startIcon {
+    margin-right: 20px;
+    margin-left: 0;
+  }
+
+  .progressBar {
+    position: absolute;
+  }
+
+  .loading {
+    background-color: blue;
+  }
+}
+
+.secondary {
+  &.buttonOutlined {
+    background-color: var(--green-100);
+    border-radius: 5px;
+    border: 1px solid transparent;
+    color: var(--white);
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: none;
+
+    &:hover {
+      background-color: var(--black);
+      border: 1px solid transparent;
+    }
+  }
+}

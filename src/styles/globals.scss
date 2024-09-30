@@ -24,26 +24,12 @@
   --gradient-horizontal: linear-gradient(90deg, #7fd1cc 0%, #9694f5 100%);
 
   // Fonts
-  --default: "Nunito, sans-serif";
-
-  // Fonts sizes
-  --xs: 0.75rem; // 12px
-  --sm: 0.875rem; // 14px
-  --md: 1rem; // 16px
-  --lg: 1.125rem; // 18px
-  --xl: 1.25rem; // 20px
-  --2xl: 1.5rem; // 24px
+  --default: "Nunito", sans-serif;
 
   // Fonts weight
   --regular: 400;
   --medium: 500;
   --bold: 700;
-
-  // Line height
-  --shorter: "125%";
-  --short: "140%";
-  --base: "160%";
-  --tall: "180%";
 }
 
 :focus {
@@ -61,60 +47,49 @@ body {
 // Styles for mobiles
 @include media-xs {
   h1 {
+    font-size: 1.125rem;
   }
 
   h2 {
+    font-size: 1rem;
   }
 
   h3 {
-  }
-
-  p {
+    font-size: 1rem;
   }
 }
 
 // Styles for large mobiles
 @include media-sm {
   h1 {
+    font-size: 1.25rem;
   }
 
   h2 {
+    font-size: 1.125rem;
   }
 
   h3 {
+    font-size: 1.125rem;
   }
 
   p {
+    font-size: 0.875rem;
   }
 }
 
 // Styles for tablets
 @include media-md {
   h1 {
+    font-size: 1.5rem;
   }
 
   h2 {
-  }
-
-  h3 {
-  }
-
-  p {
-  }
-}
-
-// Styles for desktops
-@include media-lg {
-  h1 {
-  }
-
-  h2 {
-  }
-
-  h3 {
+    font-size: 1.25rem;
   }
 
   p {
+    font-size: 1rem;
   }
 }
 
