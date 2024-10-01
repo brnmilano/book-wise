@@ -1,4 +1,6 @@
 import { Button } from "@/src/components/Button";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/router";
 import styles from "./styles.module.scss";
 import Logo from "../../../public/logo.svg";
 import Image from "next/image";
@@ -6,14 +8,21 @@ import GoogleIcon from "@/src/components/Icons/GoogleIcon";
 import GitHubIcon from "@/src/components/Icons/GitHubIcon";
 import VisitorIcon from "@/src/components/Icons/VisitorIcon";
 import Head from "next/head";
-import { signIn, useSession } from "next-auth/react";
-import { useRouter } from "next/router";
 
 export default function Home() {
-  const session = useSession();
   const router = useRouter();
 
-  console.log(session);
+  const handleConnectWithGoogle = async () => {
+    await signIn("google");
+  };
+
+  const handleConnectWithGitHub = async () => {
+    await signIn("github");
+  };
+
+  const handleConnectWithVisitor = async () => {
+    await router.push("/dashboard");
+  };
 
   return (
     <>
@@ -46,7 +55,7 @@ export default function Home() {
               size="medium"
               startIcon={<GoogleIcon />}
               aria-label="Entrar com Google"
-              onClick={() => signIn("google")}
+              onClick={handleConnectWithGoogle}
             >
               Entrar com Google
             </Button>
@@ -55,7 +64,7 @@ export default function Home() {
               size="medium"
               startIcon={<GitHubIcon />}
               aria-label="Entrar com GitHub"
-              onClick={() => signIn("github")}
+              onClick={handleConnectWithGitHub}
             >
               Entrar com GitHub
             </Button>
@@ -64,16 +73,10 @@ export default function Home() {
               size="medium"
               startIcon={<VisitorIcon />}
               aria-label="Entrar como visitante"
-              onClick={() => {
-                router.push("/dashboard");
-              }}
+              onClick={handleConnectWithVisitor}
             >
               Entrar como visitante
             </Button>
-          </div>
-
-          <div>
-            <p>{JSON.stringify(session.data)}</p>
           </div>
         </div>
       </div>
