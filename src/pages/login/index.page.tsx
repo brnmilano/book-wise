@@ -6,8 +6,15 @@ import GoogleIcon from "@/src/components/Icons/GoogleIcon";
 import GitHubIcon from "@/src/components/Icons/GitHubIcon";
 import VisitorIcon from "@/src/components/Icons/VisitorIcon";
 import Head from "next/head";
+import { signIn, useSession } from "next-auth/react";
+import { useRouter } from "next/router";
 
 export default function Home() {
+  const session = useSession();
+  const router = useRouter();
+
+  console.log(session);
+
   return (
     <>
       <Head>
@@ -39,6 +46,7 @@ export default function Home() {
               size="medium"
               startIcon={<GoogleIcon />}
               aria-label="Entrar com Google"
+              onClick={() => signIn("google")}
             >
               Entrar com Google
             </Button>
@@ -47,6 +55,7 @@ export default function Home() {
               size="medium"
               startIcon={<GitHubIcon />}
               aria-label="Entrar com GitHub"
+              onClick={() => signIn("github")}
             >
               Entrar com GitHub
             </Button>
@@ -55,9 +64,16 @@ export default function Home() {
               size="medium"
               startIcon={<VisitorIcon />}
               aria-label="Entrar como visitante"
+              onClick={() => {
+                router.push("/dashboard");
+              }}
             >
-              Entrar com Google
+              Entrar como visitante
             </Button>
+          </div>
+
+          <div>
+            <p>{JSON.stringify(session.data)}</p>
           </div>
         </div>
       </div>
