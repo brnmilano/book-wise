@@ -19,6 +19,22 @@ const nextConfig = {
    */
   productionBrowserSourceMaps: true,
 
+  /**
+   * Define padrões remotos para carregamento de imagens. Neste caso, permite
+   * que imagens sejam carregadas do domínio lh3.googleusercontent.com usando
+   * o protocolo HTTPS.
+   *
+   * @type {import('next').ImageConfig}
+   */
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "lh3.googleusercontent.com",
+      },
+    ],
+  },
+
   async redirects() {
     return [
       {
