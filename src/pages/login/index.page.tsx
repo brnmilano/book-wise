@@ -9,7 +9,7 @@ import GitHubIcon from "@/src/components/Icons/GitHubIcon";
 import VisitorIcon from "@/src/components/Icons/VisitorIcon";
 import Head from "next/head";
 
-export default function Home() {
+export default function Login() {
   const router = useRouter();
 
   const handleConnectWithGoogle = async () => {

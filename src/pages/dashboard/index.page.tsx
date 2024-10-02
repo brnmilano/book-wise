@@ -1,9 +1,10 @@
 import Head from "next/head";
 import styles from "./styles.module.scss";
+import Template from "../template";
 
 export default function Dashboard() {
   return (
-    <>
+    <Template>
       <Head>
         <title>Início | Book Wise</title>
         <meta property="og:title" content="Início | Book Wise" />
@@ -19,6 +20,6 @@ export default function Dashboard() {
       <div className={styles.container}>
         <h1>Dashboard</h1>
       </div>
-    </>
+    </Template>
   );
 }

@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+  padding: 1.25rem;
+
+  .sideBar {
+    background-color: blue;
+  }
+
+  > main {
+    padding: 3.25rem 6rem;
+    width: 100%;
+  }
+}
