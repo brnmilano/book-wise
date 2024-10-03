@@ -4,7 +4,6 @@ import { useSession } from "next-auth/react";
 import Image from "next/image";
 import styles from "./styles.module.scss";
 import Logo from "../../../public/logo.svg";
-import Link from "next/link";
 import clsx from "clsx";
 
 export default function SideBar() {
@@ -12,14 +11,8 @@ export default function SideBar() {
   const router = useRouter();
   const currentRoute = router.pathname;
 
-  const userImage = session.data?.user?.image;
   const userName = session.data?.user?.name;
   const formattedUserName = userName?.split(" ")[0];
-
-  console.log(formattedUserName);
-
-  console.log(session);
-  console.log(userImage);
 
   return (
     <div className={styles.container}>
@@ -37,49 +30,52 @@ export default function SideBar() {
           </div>
 
           <div className={styles.linksWrapper}>
-            <Link
-              href="/dashboard"
+            <div
               className={clsx(
                 styles.link,
                 currentRoute === "/dashboard" ? styles.active : ""
               )}
+              onClick={() => router.push("/dashboard")}
             >
               <ChartLineUp size={22} />
               Início
-            </Link>
+            </div>
 
-            <Link
-              href="/explore"
+            <div
               className={clsx(
                 styles.link,
                 currentRoute === "/explore" ? styles.active : ""
               )}
+              onClick={() => router.push("/explore")}
             >
               <Binoculars size={22} />
               Explorar
-            </Link>
+            </div>
 
             {session.status === "authenticated" && (
-              <Link
-                href="/profile"
+              <div
                 className={clsx(
                   styles.link,
                   currentRoute === "/profile" ? styles.active : ""
                 )}
+                onClick={() => router.push("/profile")}
               >
                 <User size={22} />
                 Perfil
-              </Link>
+              </div>
             )}
           </div>
         </div>
 
         <div>
           {session.status !== "authenticated" ? (
-            <Link href="/login" className={styles.loginLink}>
+            <div
+              className={styles.loginLink}
+              onClick={() => router.push("/login")}
+            >
               Fazer login
               <SignOut size={22} />
-            </Link>
+            </div>
           ) : (
             <>
               <div className={styles.userInfoWrapper}>
@@ -93,11 +89,14 @@ export default function SideBar() {
                 </div>
 
                 <div style={{ width: "100px" }}>
-                  <Link href="/login" className={styles.logOutLink}>
-                    {/* <p>{formattedUserName}</p> */}
-                    <p>formattedUserName</p>
+                  <div
+                    className={styles.logOutLink}
+                    onClick={() => router.push("/login")}
+                  >
+                    <p>{formattedUserName}</p>
+
                     <SignOut size={22} />
-                  </Link>
+                  </div>
                 </div>
               </div>
             </>

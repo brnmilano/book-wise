@@ -1,3 +1,49 @@
-.container {
+.titleWrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 3.75rem;
 
+  svg {
+    color: var(--green-100);
+  }
+}
+
+.dashboardContent {
+  display: flex;
+  gap: 4rem;
+
+  .readingAndEvaluationWrapper {
+    width: 65%;
+  }
+
+  .popularBooksWrapper {
+    width: 35%;
+  }
+
+  .subtitleWrapper {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.875rem;
+    color: var(--gray-100);
+    font-weight: 400;
+    margin-bottom: 1.5625rem;
+
+    p {
+      font-size: 0.875rem;
+      color: var(--gray-100);
+      font-weight: 400;
+    }
+
+    .seeAll {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      color: var(--purple-100);
+      font-weight: bold;
+      font-size: 0.875rem;
+      text-decoration: none;
+    }
+  }
 }

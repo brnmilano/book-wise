@@ -1,5 +1,7 @@
 import Head from "next/head";
 import Template from "../template";
+import { Binoculars } from "@phosphor-icons/react";
+import styles from "./styles.module.scss";
 
 export default function Explore() {
   return (
@@ -16,8 +18,12 @@ export default function Explore() {
         <link rel="canonical" href="http://localhost:3000/dashboard" />
       </Head>
 
-      <div>
-        <h1>Explore</h1>
+      <div className={styles.container}>
+        <div className={styles.titleWrapper}>
+          <Binoculars size={32} />
+
+          <h1>Explorar</h1>
+        </div>
       </div>
     </Template>
   );

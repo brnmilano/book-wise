@@ -1,5 +1,7 @@
 import Head from "next/head";
 import Template from "../template";
+import { User } from "@phosphor-icons/react";
+import styles from "./styles.module.scss";
 
 export default function Profile() {
   return (
@@ -16,8 +18,12 @@ export default function Profile() {
         <link rel="canonical" href="http://localhost:3000/dashboard" />
       </Head>
 
-      <div>
-        <h1>Profile</h1>
+      <div className={styles.container}>
+        <div className={styles.titleWrapper}>
+          <User size={32} />
+
+          <h1>Perfil</h1>
+        </div>
       </div>
     </Template>
   );
