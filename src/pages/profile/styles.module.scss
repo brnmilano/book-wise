@@ -3,9 +3,41 @@
     display: flex;
     align-items: center;
     gap: 1rem;
+    margin-bottom: 3.75rem;
 
     svg {
       color: var(--green-100);
+    }
+  }
+
+  .profileContent {
+    display: flex;
+    gap: 4rem;
+
+    .recentBooks {
+      width: 65%;
+    }
+
+    .userProfileWrapper {
+      width: 35%;
+      position: relative;
+
+      &::before {
+        content: "";
+        position: absolute;
+        width: 1px;
+        height: 500px;
+        background: var(--gray-700);
+        left: 0;
+      }
+
+      .userImageWrapper {
+        height: 72px;
+        width: 72px;
+        overflow: hidden;
+        border-radius: 100%;
+        border: 2px solid var(--green-100);
+      }
     }
   }
 }

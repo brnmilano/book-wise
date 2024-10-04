@@ -3,6 +3,7 @@ import styles from "./styles.module.scss";
 import Image, { StaticImageData } from "next/image";
 import { useState } from "react";
 import { useSession } from "next-auth/react";
+import AlternativeImage from "../../../../public/picture.png";
 
 interface DetailedCardBookProps {
   book: StaticImageData;
@@ -56,7 +57,7 @@ export default function DetailedCardBook(props: DetailedCardBookProps) {
             <div className={styles.userInfo}>
               <div className={styles.userImageWrapper}>
                 <Image
-                  src={session.data?.user?.image || "logo-rocket.png"}
+                  src={session.data?.user?.image || AlternativeImage}
                   alt="teste"
                   width={32}
                   height={32}

@@ -12,24 +12,6 @@
     border: 2px solid var(--gray-600);
   }
 
-  .iconFilled {
-    svg {
-      color: var(--purple-100);
-      font-size: 20px;
-    }
-  }
-
-  .iconEmpty {
-    svg {
-      color: var(--purple-100);
-      font-size: 20px;
-    }
-  }
-
-  .disabled {
-    opacity: 1;
-  }
-
   .bookInfo {
     display: flex;
     flex-direction: column;
@@ -44,6 +26,24 @@
         font-weight: 400;
         color: var(--gray-400);
       }
+    }
+
+    .iconFilled {
+      svg {
+        color: var(--purple-100);
+        font-size: 20px;
+      }
+    }
+
+    .iconEmpty {
+      svg {
+        color: var(--purple-100);
+        font-size: 20px;
+      }
+    }
+
+    .disabled {
+      opacity: 1;
     }
   }
 }

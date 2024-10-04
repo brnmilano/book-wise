@@ -5,6 +5,7 @@ import Image from "next/image";
 import styles from "./styles.module.scss";
 import Logo from "../../../public/logo.svg";
 import clsx from "clsx";
+import AlternativeImage from "../../../public/logo-rocket.png";
 
 export default function SideBar() {
   const session = useSession();
@@ -81,7 +82,7 @@ export default function SideBar() {
               <div className={styles.userInfoWrapper}>
                 <div className={styles.userImageWrapper}>
                   <Image
-                    src={session.data.user?.image || "logo-rocket.png"}
+                    src={session.data.user?.image || AlternativeImage}
                     alt="teste"
                     width={32}
                     height={32}

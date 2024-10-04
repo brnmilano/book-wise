@@ -1,11 +1,26 @@
 .container {
-  .titleWrapper {
+  .titleAndSearchWrapper {
     display: flex;
-    align-items: center;
-    gap: 1rem;
+    justify-content: space-between;
+    margin-bottom: 2.5rem;
 
-    svg {
-      color: var(--green-100);
+    .title {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+
+      svg {
+        color: var(--green-100);
+      }
     }
+  }
+
+  .parent {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-column-gap: 1.25rem;
+    grid-row-gap: 0;
+    margin-top: 3.125rem;
   }
 }
