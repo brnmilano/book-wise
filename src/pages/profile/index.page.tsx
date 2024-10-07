@@ -1,4 +1,10 @@
-import { User } from "@phosphor-icons/react";
+import {
+  BookmarkSimple,
+  BookOpen,
+  Books,
+  User,
+  UserList,
+} from "@phosphor-icons/react";
 import { fakeBooks } from "@/src/utils/books";
 import { useSession } from "next-auth/react";
 import Head from "next/head";
@@ -7,9 +13,12 @@ import styles from "./styles.module.scss";
 import DetailedCardBook from "@/src/components/Card/DetailedCardBook";
 import Image from "next/image";
 import AlternativeImage from "../../../public/logo.svg";
+import StandardCardBook from "@/src/components/Card/StandardCardBook";
 
 export default function Profile() {
   const session = useSession();
+
+  console.log(session.data?.user?.name);
 
   return (
     <Template>
@@ -36,7 +45,7 @@ export default function Profile() {
           {/* Ultima leitura e avaliações recentes */}
           <div className={styles.recentBooks}>
             {fakeBooks.map((item, index) => (
-              <DetailedCardBook
+              <StandardCardBook
                 key={`${index} ${item.title}`}
                 book={item.book}
                 date={item.date}
@@ -57,8 +66,56 @@ export default function Profile() {
                 width={72}
                 height={72}
               />
+            </div>
 
+            <div className={styles.nameAndSince}>
               <h2>{session.data?.user?.name}</h2>
+
+              <span>membro desde 2019</span>
+            </div>
+
+            <div className={styles.divider} />
+
+            <div className={styles.userBooksInfo}>
+              <div className={styles.readBooks}>
+                <BookOpen size={32} />
+
+                <div>
+                  <h3>3000</h3>
+
+                  <p>Páginas lidas</p>
+                </div>
+              </div>
+
+              <div className={styles.readBooks}>
+                <Books size={32} />
+
+                <div>
+                  <h3>10</h3>
+
+                  <p>Livros avaliados</p>
+                </div>
+              </div>
+
+              <div className={styles.readBooks}>
+                <UserList size={32} />
+
+                <div>
+                  <h3>8</h3>
+
+                  <p>Autores lidos</p>
+                </div>
+              </div>
+
+              <div className={styles.readBooks}>
+                <BookmarkSimple size={32} />
+
+                <div>
+                  <h3>Computação</h3>
+
+                  <p>Categoria mais lida</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

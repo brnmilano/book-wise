@@ -1,8 +1,9 @@
 import type { AppProps } from "next/app";
 import { Nunito } from "@next/font/google";
-import "../styles/index.scss";
-import Head from "next/head";
 import { SessionProvider } from "next-auth/react";
+import { CommonProvider } from "../hooks/useCommon";
+import Head from "next/head";
+import "../styles/index.scss";
 
 const nunito = Nunito({
   weight: ["400", "500", "600", "700"],
@@ -23,7 +24,9 @@ export default function App({
       </Head>
 
       <SessionProvider session={session}>
-        <Component {...pageProps} />
+        <CommonProvider>
+          <Component {...pageProps} />
+        </CommonProvider>
       </SessionProvider>
     </div>
   );

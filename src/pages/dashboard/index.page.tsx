@@ -36,7 +36,7 @@ export default function Dashboard() {
         <div className={styles.dashboardContent}>
           {/* Ultima leitura e avaliações recentes */}
           <div className={styles.readingAndEvaluationWrapper}>
-            {session.status !== "authenticated" ? (
+            {session.status === "authenticated" ? (
               <>
                 <div className={styles.subtitleWrapper}>
                   <p>Sua última leitura</p>

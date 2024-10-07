@@ -21,12 +21,15 @@
     .userProfileWrapper {
       width: 35%;
       position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
 
       &::before {
         content: "";
         position: absolute;
         width: 1px;
-        height: 500px;
+        height: 600px;
         background: var(--gray-700);
         left: 0;
       }
@@ -37,6 +40,54 @@
         overflow: hidden;
         border-radius: 100%;
         border: 2px solid var(--green-100);
+      }
+
+      .nameAndSince {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 1.875rem;
+        gap: 0.5rem;
+
+        span {
+          font-size: 0.875rem;
+          color: var(--gray-400);
+        }
+      }
+
+      .divider {
+        width: 2rem;
+        height: 4px;
+        margin: 3.125rem 0;
+        background: var(--gradient-vertical);
+        border-radius: 0.625rem;
+      }
+
+      .userBooksInfo {
+        display: flex;
+        flex-direction: column;
+        gap: 3.125rem;
+
+        svg {
+          color: var(--green-100);
+        }
+
+        .readBooks {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+
+          div {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+
+            p {
+              font-size: 0.875rem;
+              color: var(--gray-300);
+            }
+          }
+        }
       }
     }
   }

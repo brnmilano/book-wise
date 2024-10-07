@@ -18,7 +18,7 @@
   .parent {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(5, 1fr);
+    grid-template-rows: repeat(3, 1fr);
     grid-column-gap: 1.25rem;
     grid-row-gap: 0;
     margin-top: 3.125rem;

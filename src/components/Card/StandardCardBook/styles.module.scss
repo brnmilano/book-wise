@@ -51,6 +51,7 @@
       display: flex;
       flex-direction: column;
       gap: 15px;
+      margin-bottom: 1.25rem;
 
       p {
         font-size: 0.875rem;
@@ -66,6 +67,69 @@
         color: var(--gray-300);
         line-height: 160%;
       }
+    }
+  }
+}
+
+.containerProfile {
+  display: flex;
+  padding: 1.25rem 1.5625rem;
+  gap: 1.5625rem;
+  background-color: var(--gray-700);
+  border: 2px solid var(--gray-700);
+  border-radius: 8px;
+  transition: all 0.2s ease-in-out;
+  margin-bottom: 1.25rem;
+
+  &:hover {
+    border: 2px solid var(--gray-600);
+  }
+
+  .profilePageWrapper {
+    .bookInfos {
+      display: flex;
+      margin-bottom: 1.875rem;
+      gap: 1.875rem;
+
+      .titleAndRating {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .titleAndAuthor {
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+
+          p {
+            font-size: 0.875rem;
+            font-weight: 400;
+            color: var(--gray-400);
+          }
+        }
+      }
+
+      .iconFilled {
+        svg {
+          color: var(--purple-100);
+        }
+      }
+
+      .iconEmpty {
+        svg {
+          color: var(--purple-100);
+        }
+      }
+
+      .disabled {
+        opacity: 1;
+      }
+    }
+
+    .description {
+      line-height: 160%;
+      font-size: 0.875rem;
+      color: var(--gray-300);
     }
   }
 }

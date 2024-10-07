@@ -55,6 +55,7 @@ export default function Explore() {
           {fakeBooks.map((book, index) => (
             <SimpleCardBook
               key={`${book.title} ${index}`}
+              id={book.id}
               title={book.title}
               authorName={book.authorName}
               book={book.book}
