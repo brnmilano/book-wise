@@ -14,11 +14,20 @@ import DetailedCardBook from "@/src/components/Card/DetailedCardBook";
 import Image from "next/image";
 import AlternativeImage from "../../../public/logo.svg";
 import StandardCardBook from "@/src/components/Card/StandardCardBook";
+import { useEffect } from "react";
+import { api } from "@/src/lib/axios";
 
 export default function Profile() {
   const session = useSession();
 
-  console.log(session.data?.user?.name);
+  const onLoadScreen = async () => {
+    const response = await api.get("/users/get-user");
+    console.log(response);
+  };
+
+  useEffect(() => {
+    onLoadScreen();
+  }, []);
 
   return (
     <Template>

@@ -1,0 +1,73 @@
+.container {
+  padding: 1.5rem;
+  background-color: var(--gray-700);
+  border-radius: 8px;
+  margin-bottom: 0.75rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  .imageAndName {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+
+    .userImageWrapper {
+      height: 40px;
+      width: 40px;
+      overflow: hidden;
+      border-radius: 100%;
+      border: 2px solid var(--green-100);
+    }
+
+    .userNameWrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3125rem;
+
+      h3 {
+        font-size: 1rem;
+      }
+
+      p {
+        color: var(--gray-400);
+        font-size: 0.875rem;
+      }
+    }
+
+    .ratingWrapper {
+      position: absolute;
+      right: 0;
+
+      .iconFilled {
+        svg {
+          color: var(--purple-100);
+          font-size: 20px;
+        }
+      }
+
+      .iconEmpty {
+        svg {
+          color: var(--purple-100);
+          font-size: 20px;
+        }
+      }
+
+      .disabled {
+        opacity: 1;
+      }
+    }
+  }
+
+  .descriptionWrapper {
+    margin-top: 2.1875rem;
+
+    p {
+      line-height: 160%;
+      font-size: 0.875rem;
+      color: var(--gray-300);
+    }
+  }
+}

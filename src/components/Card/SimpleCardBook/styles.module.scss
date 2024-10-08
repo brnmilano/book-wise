@@ -161,12 +161,27 @@
     .evaluationWrapper {
       display: flex;
       justify-content: space-between;
+      font-size: 0.875rem;
+      color: var(--gray-100);
+      font-weight: 400;
       margin-top: 3.125rem;
       margin-bottom: 1.875rem;
 
       p {
         font-size: 0.875rem;
-        color: var(--gray-200);
+        color: var(--gray-100);
+        font-weight: 400;
+      }
+
+      .evaluationLink {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        color: var(--purple-100);
+        font-weight: bold;
+        font-size: 0.875rem;
+        text-decoration: none;
       }
     }
   }

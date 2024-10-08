@@ -3,20 +3,23 @@ import Image, { StaticImageData } from "next/image";
 import { Rating } from "@mui/material";
 import styles from "./styles.module.scss";
 import Drawer from "../../Drawer";
-import FakeImage from "../../../../public/images/14-habitos-de-desenvolvedores-altamente-produtivos.png";
 import { BookmarkSimple, BookOpen } from "@phosphor-icons/react";
 import Link from "next/link";
+import EvaluationCard from "../EvaluationCard";
 
 interface SimpleCardBookProps {
-  id: number;
-  book: StaticImageData;
-  title: string;
-  authorName: string;
-  rating: number;
+  id: string;
+  book?: string;
+  name: string;
+  author: string;
+  rating?: number;
 }
 
 export default function SimpleCardBook(props: SimpleCardBookProps) {
-  const { id, book, title, authorName, rating } = props;
+  const { id, book, name, author, rating } = props;
+
+  console.log(book);
+  
 
   const [value, setValue] = useState<number | null>(2);
   const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
@@ -34,7 +37,7 @@ export default function SimpleCardBook(props: SimpleCardBookProps) {
         <div className={styles.drawerContainer}>
           <div className={styles.bookWrapper}>
             <div className={styles.bookImageAndInfos}>
-              <Image src={FakeImage} alt="" width={171} height={242} />
+              {/* <Image src={FakeImage} alt="" width={171} height={242} /> */}
 
               <div className={styles.bookInfo}>
                 <div className={styles.titleAndAuthor}>
@@ -91,10 +94,12 @@ export default function SimpleCardBook(props: SimpleCardBookProps) {
           <div className={styles.evaluationWrapper}>
             <p>Avaliações</p>
 
-            <Link href="" className={styles.seeAll}>
+            <Link href="" className={styles.evaluationLink}>
               Avaliar
             </Link>
           </div>
+
+          <EvaluationCard />
         </div>
       </Drawer>
 
@@ -103,14 +108,16 @@ export default function SimpleCardBook(props: SimpleCardBookProps) {
         onClick={() => setIsDrawerOpen(!isDrawerOpen)}
       >
         <div>
-          <Image src={book} alt={title} width={64} height={94} />
+          {/* <Image src={book} alt={name} width={64} height={94} /> */}
+
+          <img src={book} alt="" width={64} height={94} />
         </div>
 
         <div className={styles.bookInfo}>
           <div className={styles.titleAndAuthor}>
-            <h3>{title}</h3>
+            <h3>{name}</h3>
 
-            <p>{authorName}</p>
+            <p>{author}</p>
           </div>
 
           <Rating

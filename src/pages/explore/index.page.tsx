@@ -5,11 +5,20 @@ import styles from "./styles.module.scss";
 import { Input } from "@/src/components/Input";
 import { useForm } from "react-hook-form";
 import Tags from "@/src/components/Tags";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SimpleCardBook from "@/src/components/Card/SimpleCardBook";
 import { fakeBooks } from "@/src/utils/books";
+import { api } from "@/src/lib/axios";
+import { GetServerSideProps } from "next";
+import { BookProps } from "@/src/types/books";
+import { booksPath } from "@/src/constants/paths";
+import absoluteUrl from "next-absolute-url";
 
-export default function Explore() {
+interface BooksProps {
+  books: BookProps[];
+}
+
+export default function Explore({ books }: BooksProps) {
   const {
     control,
     handleSubmit,
@@ -52,14 +61,14 @@ export default function Explore() {
         </div>
 
         <div className={styles.parent}>
-          {fakeBooks.map((book, index) => (
+          {books.map((book, index) => (
             <SimpleCardBook
-              key={`${book.title} ${index}`}
+              key={`${book.id} ${index}`}
               id={book.id}
-              title={book.title}
-              authorName={book.authorName}
-              book={book.book}
-              rating={book.rating}
+              name={book.name}
+              author={book.author}
+              book={book.cover_url}
+              //rating={book.rating}
             />
           ))}
         </div>
@@ -67,3 +76,23 @@ export default function Explore() {
     </Template>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { req } = context;
+  const { origin } = absoluteUrl(req);
+  const booksPath = `${origin}/api/books`;
+
+  try {
+    const { data: books } = await api.get(booksPath);
+
+    return {
+      props: { books },
+    };
+  } catch (error) {
+    console.error("Error fetching books:", error);
+
+    return {
+      props: { books: [] },
+    };
+  }
+};

@@ -91,7 +91,7 @@ export default function Dashboard() {
               </Link>
             </div>
 
-            {fakeBooks.map((item, index) => (
+            {/* {fakeBooks.map((item, index) => (
               <SimpleCardBook
                 key={`${index} ${item.title}`}
                 book={item.book}
@@ -99,7 +99,7 @@ export default function Dashboard() {
                 title={item.title}
                 authorName={item.authorName}
               />
-            ))}
+            ))} */}
           </div>
         </div>
       </div>
