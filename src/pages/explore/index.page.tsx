@@ -5,13 +5,10 @@ import styles from "./styles.module.scss";
 import { Input } from "@/src/components/Input";
 import { useForm } from "react-hook-form";
 import Tags from "@/src/components/Tags";
-import { useEffect, useState } from "react";
 import SimpleCardBook from "@/src/components/Card/SimpleCardBook";
-import { fakeBooks } from "@/src/utils/books";
 import { api } from "@/src/lib/axios";
 import { GetServerSideProps } from "next";
 import { BookProps } from "@/src/types/books";
-import { booksPath } from "@/src/constants/paths";
 import absoluteUrl from "next-absolute-url";
 
 interface BooksProps {
@@ -67,8 +64,7 @@ export default function Explore({ books }: BooksProps) {
               id={book.id}
               name={book.name}
               author={book.author}
-              book={book.cover_url}
-              //rating={book.rating}
+              bookImage={book.cover_url}
             />
           ))}
         </div>
@@ -83,7 +79,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const booksPath = `${origin}/api/books`;
 
   try {
-    const { data: books } = await api.get(booksPath);
+    const { data: books } = await api.get<BookProps>(booksPath);
 
     return {
       props: { books },

@@ -6,7 +6,7 @@ import { useSession } from "next-auth/react";
 import AlternativeImage from "../../../../public/picture.png";
 
 interface DetailedCardBookProps {
-  book: StaticImageData;
+  bookImage: string;
   date: Date;
   rating: number;
   title: string;
@@ -15,7 +15,7 @@ interface DetailedCardBookProps {
 }
 
 export default function DetailedCardBook(props: DetailedCardBookProps) {
-  const { book, date, rating, title, authorName, description } = props;
+  const { bookImage, date, rating, title, authorName, description } = props;
 
   const session = useSession();
 
@@ -56,8 +56,8 @@ export default function DetailedCardBook(props: DetailedCardBookProps) {
           <div className={styles.ratingWrapper}>
             <div className={styles.userInfo}>
               <div className={styles.userImageWrapper}>
-                <Image
-                  src={session.data?.user?.image || AlternativeImage}
+                <img
+                  src={session.data?.user?.image || ""}
                   alt="teste"
                   width={32}
                   height={32}
@@ -87,7 +87,7 @@ export default function DetailedCardBook(props: DetailedCardBookProps) {
           </div>
 
           <div style={{ display: "flex" }}>
-            <Image src={book} alt={title} width={108} height={152} />
+            <img src={bookImage} alt={title} width={108} height={152} />
 
             <div className={styles.bookInfo}>
               <div className={styles.titleAndSubtitle}>

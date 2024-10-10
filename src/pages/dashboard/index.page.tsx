@@ -1,6 +1,5 @@
 import { useSession } from "next-auth/react";
 import { CaretRight, ChartLineUp } from "@phosphor-icons/react";
-import { fakeBooks } from "@/src/utils/books";
 import Head from "next/head";
 import styles from "./styles.module.scss";
 import Template from "../template";
@@ -8,8 +7,18 @@ import Link from "next/link";
 import SimpleCardBook from "@/src/components/Card/SimpleCardBook";
 import DetailedCardBook from "@/src/components/Card/DetailedCardBook";
 import StandardCardBook from "@/src/components/Card/StandardCardBook";
+import absoluteUrl from "next-absolute-url";
+import { GetServerSideProps } from "next";
+import { BookProps } from "@/src/types/books";
+import { api } from "@/src/lib/axios";
 
-export default function Dashboard() {
+interface BooksProps {
+  books: BookProps[];
+}
+
+export default function Dashboard({ books }: BooksProps) {
+  console.log(books);
+
   const session = useSession();
 
   return (
@@ -36,26 +45,26 @@ export default function Dashboard() {
         <div className={styles.dashboardContent}>
           {/* Ultima leitura e avaliações recentes */}
           <div className={styles.readingAndEvaluationWrapper}>
-            {session.status === "authenticated" ? (
+            {session.status !== "authenticated" ? (
               <>
                 <div className={styles.subtitleWrapper}>
                   <p>Sua última leitura</p>
 
                   <Link href="/profile" className={styles.seeAll}>
-                    Ver todas
+                    Ver todasaa
                     <CaretRight size={18} />
                   </Link>
                 </div>
 
-                {fakeBooks.map((item, index) => (
+                {books.map((item, index) => (
                   <StandardCardBook
-                    key={`${index} ${item.title}`}
-                    book={item.book}
-                    date={item.date}
-                    rating={item.rating}
-                    title={item.title}
-                    authorName={item.authorName}
-                    description={item.description}
+                    key={`${index} ${item.id}`}
+                    book={item.cover_url}
+                    date={new Date()}
+                    rating={4}
+                    title={item.name}
+                    authorName={item.author}
+                    description={item.summary}
                   />
                 ))}
               </>
@@ -65,15 +74,15 @@ export default function Dashboard() {
                   <p>Avaliações mais recentes</p>
                 </div>
 
-                {fakeBooks.map((item, index) => (
+                {books.map((item, index) => (
                   <DetailedCardBook
-                    key={`${index} ${item.title}`}
-                    book={item.book}
-                    date={item.date}
-                    rating={item.rating}
-                    title={item.title}
-                    authorName={item.authorName}
-                    description={item.description}
+                    key={`${index} ${item.id}`}
+                    bookImage={item.cover_url}
+                    date={new Date()}
+                    rating={4}
+                    title={item.name}
+                    authorName={item.author}
+                    description={item.summary}
                   />
                 ))}
               </>
@@ -91,18 +100,42 @@ export default function Dashboard() {
               </Link>
             </div>
 
-            {/* {fakeBooks.map((item, index) => (
+            {books.map((item, index) => (
               <SimpleCardBook
-                key={`${index} ${item.title}`}
-                book={item.book}
-                rating={item.rating}
-                title={item.title}
-                authorName={item.authorName}
+                key={`${index} ${item.id}`}
+                id={item.id}
+                bookImage={item.cover_url}
+                rating={3}
+                name={item.name}
+                author={item.author}
+                categories={{
+                  name: "Programação",
+                }}
               />
-            ))} */}
+            ))}
           </div>
         </div>
       </div>
     </Template>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { req } = context;
+  const { origin } = absoluteUrl(req);
+  const booksPath = `${origin}/api/books`;
+
+  try {
+    const { data: books } = await api.get<BookProps>(booksPath);
+
+    return {
+      props: { books },
+    };
+  } catch (error) {
+    console.error("Error fetching books:", error);
+
+    return {
+      props: { books: [] },
+    };
+  }
+};

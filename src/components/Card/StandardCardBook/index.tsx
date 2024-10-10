@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import clsx from "clsx";
 
 interface CardProps {
-  book: StaticImageData;
+  book: string;
   date: Date;
   rating: number;
   title: string;
@@ -32,7 +32,7 @@ export default function StandardCardBook(props: CardProps) {
       {router.pathname === "/profile" ? (
         <div className={styles.profilePageWrapper}>
           <div className={styles.bookInfos}>
-            <Image src={book} alt={title} width={98} height={134} />
+            <img src={book} alt={title} width={98} height={134} />
 
             <div className={styles.titleAndRating}>
               <div className={styles.titleAndAuthor}>
@@ -48,7 +48,7 @@ export default function StandardCardBook(props: CardProps) {
                   iconEmpty: styles.iconEmpty,
                   disabled: styles.disabled,
                 }}
-                value={rating}
+                value={value}
                 onChange={(event, newValue) => {
                   setValue(newValue);
                 }}
@@ -62,7 +62,7 @@ export default function StandardCardBook(props: CardProps) {
       ) : (
         <>
           <div>
-            <Image src={book} alt={title} width={108} height={152} />
+            <img src={book} alt={title} width={108} height={152} />
           </div>
 
           <div className={styles.cardContent}>

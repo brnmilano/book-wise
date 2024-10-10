@@ -32,8 +32,6 @@ export default function EvaluationCard() {
 
   const onLoadScreen = async () => {
     const ratings = await api.get("/ratings");
-
-    console.log(ratings);
   };
 
   useEffect(() => {

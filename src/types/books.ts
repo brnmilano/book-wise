@@ -1,5 +1,3 @@
-import { CategoryProps } from "./categories";
-
 export type BookProps = {
   id: string;
   name: string;
@@ -7,5 +5,8 @@ export type BookProps = {
   summary: string;
   cover_url: string;
   total_pages: number;
-  categories: CategoryProps[];
+  categories: {
+    name: string;
+    id: string;
+  };
 };

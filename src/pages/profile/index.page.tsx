@@ -5,7 +5,6 @@ import {
   User,
   UserList,
 } from "@phosphor-icons/react";
-import { fakeBooks } from "@/src/utils/books";
 import { useSession } from "next-auth/react";
 import Head from "next/head";
 import Template from "../template";
@@ -22,7 +21,6 @@ export default function Profile() {
 
   const onLoadScreen = async () => {
     const response = await api.get("/users/get-user");
-    console.log(response);
   };
 
   useEffect(() => {
@@ -53,7 +51,7 @@ export default function Profile() {
         <div className={styles.profileContent}>
           {/* Ultima leitura e avaliações recentes */}
           <div className={styles.recentBooks}>
-            {fakeBooks.map((item, index) => (
+            {/* {fakeBooks.map((item, index) => (
               <StandardCardBook
                 key={`${index} ${item.title}`}
                 book={item.book}
@@ -63,7 +61,7 @@ export default function Profile() {
                 authorName={item.authorName}
                 description={item.description}
               />
-            ))}
+            ))} */}
           </div>
 
           {/* Livros populares */}
