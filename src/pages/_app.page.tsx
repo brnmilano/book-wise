@@ -2,6 +2,7 @@ import type { AppProps } from "next/app";
 import { Nunito } from "@next/font/google";
 import { SessionProvider } from "next-auth/react";
 import { CommonProvider } from "../hooks/useCommon";
+import { Toaster } from "react-hot-toast";
 import Head from "next/head";
 import "../styles/index.scss";
 
@@ -25,6 +26,8 @@ export default function App({
 
       <SessionProvider session={session}>
         <CommonProvider>
+          <Toaster position="top-center" />
+
           <Component {...pageProps} />
         </CommonProvider>
       </SessionProvider>

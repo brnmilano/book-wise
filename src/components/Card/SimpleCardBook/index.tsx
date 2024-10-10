@@ -1,25 +1,26 @@
 import { useState } from "react";
-import Image, { StaticImageData } from "next/image";
+import { BookmarkSimple, BookOpen } from "@phosphor-icons/react";
 import { Rating } from "@mui/material";
 import styles from "./styles.module.scss";
 import Drawer from "../../Drawer";
-import { BookmarkSimple, BookOpen } from "@phosphor-icons/react";
 import Link from "next/link";
 import EvaluationCard from "../EvaluationCard";
 
 interface SimpleCardBookProps {
   id: string;
-  book?: string;
+  bookImage: string;
   name: string;
   author: string;
   rating?: number;
+  categories?: {
+    name: string;
+  };
 }
 
 export default function SimpleCardBook(props: SimpleCardBookProps) {
-  const { id, book, name, author, rating } = props;
+  const { bookImage, name, author, rating, categories } = props;
 
-  console.log(book);
-  
+  console.log(categories);
 
   const [value, setValue] = useState<number | null>(2);
   const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
@@ -37,13 +38,11 @@ export default function SimpleCardBook(props: SimpleCardBookProps) {
         <div className={styles.drawerContainer}>
           <div className={styles.bookWrapper}>
             <div className={styles.bookImageAndInfos}>
-              {/* <Image src={FakeImage} alt="" width={171} height={242} /> */}
-
               <div className={styles.bookInfo}>
                 <div className={styles.titleAndAuthor}>
-                  <h2>14 Hábitos de Desenvolvedores Altamente Produtivos</h2>
+                  <h2>{name}</h2>
 
-                  <p>Zeno Rocha</p>
+                  <p>{author}</p>
                 </div>
 
                 <div className={styles.ratingWrapper}>
@@ -54,7 +53,7 @@ export default function SimpleCardBook(props: SimpleCardBookProps) {
                       iconFilled: styles.iconFilled,
                       iconEmpty: styles.iconEmpty,
                     }}
-                    value={rating}
+                    value={3}
                     onChange={(event, newValue) => {
                       setValue(newValue);
                     }}
@@ -75,7 +74,9 @@ export default function SimpleCardBook(props: SimpleCardBookProps) {
                 <div>
                   <p>Categoria</p>
 
-                  <h3>Computação, educação</h3>
+                  {/* {categories.map((category) => (
+                    <h3 key={category.id}>{category.name}</h3>
+                  ))} */}
                 </div>
               </div>
 
@@ -108,9 +109,7 @@ export default function SimpleCardBook(props: SimpleCardBookProps) {
         onClick={() => setIsDrawerOpen(!isDrawerOpen)}
       >
         <div>
-          {/* <Image src={book} alt={name} width={64} height={94} /> */}
-
-          <img src={book} alt="" width={64} height={94} />
+          <img src={bookImage} alt={name} width={64} height={94} />
         </div>
 
         <div className={styles.bookInfo}>

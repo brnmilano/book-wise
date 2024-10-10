@@ -2,6 +2,7 @@ import clsx from "clsx";
 import styles from "./styles.module.scss";
 import { categories } from "@/prisma/constants/categories";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 /**
  * @description Componente de tags para filtrar livros por categoria.
@@ -19,6 +20,12 @@ import { useState } from "react";
 export default function Tags() {
   const [selectedTagIndex, setSelectedTagIndex] = useState<number | null>(null);
 
+  const handleSearchByCategory = (index: number) => {
+    toast.error("Funcionalidade em desenvolvimento!");
+
+    setSelectedTagIndex(index);
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.tagsWrapper}>
@@ -29,7 +36,7 @@ export default function Tags() {
               styles.tag,
               selectedTagIndex === index ? styles.selected : ""
             )}
-            onClick={() => setSelectedTagIndex(index)}
+            onClick={() => handleSearchByCategory(index)}
           >
             {tag.name}
           </p>
